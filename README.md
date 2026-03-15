@@ -13,6 +13,7 @@ A mobile-responsive web interface that turns your local machine into a private A
 ### 1. Install Dependencies
 
 * **Ollama:** Download from [ollama.com](https://ollama.com)
+* **Model:** pull llama3.2:1b using ollama
 * **Python 3.9+:** Make sure it's installed and available in your PATH
 
 ### 2. Configure & Run Ollama
