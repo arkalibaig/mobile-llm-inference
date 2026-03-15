@@ -1,10 +1,11 @@
 # Pocket Llama 3.2 (1B)
+A mobile-responsive web interface that transforms your local hardware into a private AI Cloud.
 
-A mobile-responsive web interface that turns your local machine into a private AI cloud. Chat with Meta's Llama 3.2 or any model you like from any device on your local network — no internet required.
+Securely chat with Meta's Llama 3.2 (or any model of your choice) from your phone, tablet, or laptop across your local network. No data leaves your machine, no internet is required, and your privacy is 100% locally hosted.
 
 ## How It Works
 
-1. **Backend:** Ollama runs the Llama 3.2 1B or any other model and exposes it via a local API.
+1. **Backend:** Ollama serves as the inference engine, running Llama 3.2 (or any GGUF-compatible model) and exposing a local REST API.
 2. **Middleware:** A Streamlit Python app manages chat history and communicates with Ollama.
 3. **Frontend:** Any mobile browser connects to the Streamlit server over Wi-Fi.
 
@@ -13,8 +14,12 @@ A mobile-responsive web interface that turns your local machine into a private A
 ### 1. Install Dependencies
 
 * **Ollama:** Download from [ollama.com](https://ollama.com)
-* **Model:** pull llama3.2:1b using ollama
 * **Python 3.9+:** Make sure it's installed and available in your PATH
+* **Model:** Pull the desired model via Ollama before launching the interface. For example:
+  ```bash
+  ollama pull llama3.2:1b
+  (Note: You can use any model available in the Ollama library; just ensure the model name in app.py matches what you pull.)
+  ```
 
 ### 2. Configure & Run Ollama
 
