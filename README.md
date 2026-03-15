@@ -4,7 +4,7 @@ A mobile-responsive web interface that turns your local machine into a private A
 
 ## How It Works
 
-1. **Backend:** Ollama runs the Llama 3.2 1B model and exposes it via a local API.
+1. **Backend:** Ollama runs the Llama 3.2 1B or any other model and exposes it via a local API.
 2. **Middleware:** A Streamlit Python app manages chat history and communicates with Ollama.
 3. **Frontend:** Any mobile browser connects to the Streamlit server over Wi-Fi.
 
