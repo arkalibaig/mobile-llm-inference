@@ -1,6 +1,6 @@
 # Pocket Llama 3.2 (1B)
 
-A mobile-responsive web interface that turns your local machine into a private AI cloud. Chat with Meta's Llama 3.2 model from any device on your local network — no internet required.
+A mobile-responsive web interface that turns your local machine into a private AI cloud. Chat with Meta's Llama 3.2 or any model you like from any device on your local network — no internet required.
 
 ## How It Works
 
