@@ -1,13 +1,15 @@
 import streamlit as st
 import requests 
 
-st.title("llama for Mobile")
+st.title("Arkali Intelligence")
 
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": "You are an ai assistant. Provide direct answers without unnecessary fluff"}]
+    st.session_state.messages = [{"role": "system", "content": "You are an ai assistant. Provide direct answers without unnecessary fluff, also you're running locally on my laptop. and be chill"}]
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    
+    if message["role"] != "system": 
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
 prompt = st.chat_input("what is on your mind?")
 
@@ -21,9 +23,13 @@ if prompt:
 url = "http://localhost:11434/api/chat"
 
 payload = {
-    "model" : "llama3.2:1b",
-    "messages" : st.session_state.messages,
-    "stream" : True
+    "model": "gemma4:e2b",
+    "messages": st.session_state.messages,
+    "stream": True,
+    "options": {
+        "num_predict": 512,  
+        "think": False       
+    }
 }
 response  = requests.post(url , json=payload)
 
