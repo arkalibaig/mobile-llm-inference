@@ -2,13 +2,13 @@ import streamlit as st
 import ollama
 
 st.set_page_config(
-    page_title="",
+    page_title="local-llm",
     layout="wide",
     page_icon="◈",
     initial_sidebar_state="expanded"
 )
 
-# ── Safe Custom CSS ──
+# Custom CSS 
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
@@ -143,7 +143,6 @@ st.markdown(
 # ─────────────────────────────────────────────────────────────────────────────
 # CHAT HISTORY RENDERER
 # ─────────────────────────────────────────────────────────────────────────────
-# We use Streamlit's native chat messages, but let the CSS hide the ugly default avatars
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         if msg["role"] == "user":
@@ -177,16 +176,15 @@ if not st.session_state.messages:
 # CHAT INPUT + STREAMING
 # ─────────────────────────────────────────────────────────────────────────────
 if prompt := st.chat_input("What's on your mind?"):
-    
-    # 1. Add and render user message
+
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(f"<div style='color:#c0c0d0; font-family:DM Sans; text-align:right;'>{prompt}</div>", unsafe_allow_html=True)
 
-    # 2. Prepare payload
+
     messages_with_system = [{"role": "system", "content": system_prompt}] + st.session_state.messages
 
-    # 3. Stream response
+        #Stream response
     with st.chat_message("assistant"):
         placeholder = st.empty()
         full_response = ""
@@ -210,7 +208,7 @@ if prompt := st.chat_input("What's on your mind?"):
             # Final render without the cursor
             placeholder.markdown(f"<div style='color:#9a9aaa; font-family:DM Sans;'>{full_response}</div>", unsafe_allow_html=True)
             
-            # 4. Save to history
+            # 4= history
             st.session_state.messages.append({"role": "assistant", "content": full_response})
             st.rerun() # Force a clean rerun to format the <think> tags correctly into expanders
             
